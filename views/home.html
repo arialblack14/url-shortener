@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FreeCodeCamp API Basejump: URL Shortener Microservice</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<div class="jumbotron">
+  <h2>FreeCodeCamp API Basejump: URL Shortener Microservice</h2>
+  <p>A project for the <a href="https://www.freecodecamp.com/challenges/url-shortener-microservice">Freecodecamp</a> curriculum.</p>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>User stories</h3>
+    <p>I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</p>
+    <p>When I visit that shortened URL, it will redirect me to my original link.</p>
+  </div>
+  <div class="col-sm-12">
+    <h4>Example creation usage</h4>
+    <p>
+      https://some.example-app.com/shorten/https://www.google.com
+      https://some.example-app.com/shorten/http://foo.com:80
+    </p>
+  </div>
+  <div class="col-sm-12">
+    <h4>Example creation output</h4>
+    <p>
+      {
+        "original_url":"http://foo.com:80", <br />
+        "short_url":"https://some.example-app.com/8170"
+      }
+    </p>
+  </div>
+  <div class="col-sm-12">
+    <h3>Usage</h3>
+    <p>
+      https://some.example-app.com/2871
+    </p>
+  </div>
+  <div class="col-sm-12">
+    <h4>Will redirect to</h4>
+    <p>
+      https://www.google.com/
+    </p>
+  </div>
+  <div class="col-sm-6 col-sm-offset-5">
+    <a type="button" class="btn btn-default" href="/whoami">Shorten</a>
+  </div>
+</div>
+<footer>
+  Find/fork me on <a href="https://github.com/arialblack14/request-header-parser-microservice">Github</a>.
+</footer>
+</div>
+
+</body>
+</html>
