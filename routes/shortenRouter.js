@@ -19,11 +19,11 @@ shortenRouter.route('/:short')
 // i implement an additional router function that handles this
 shortenRouter.route('/http\://:short') // escape ":"
 .get(function(req, res, next) {
-  res.send(shortener.httpShortener(req, req.params.short));
+  res.send(shortener.httpShortener(req, 'http://' + req.params.short));
 });
 shortenRouter.route('/https\://:short') // escape ":"
 .get(function(req, res, next) {
-  res.send(shortener.httpsShortener(req, req.params.short));
+  res.send(shortener.httpsShortener(req, 'https://' + req.params.short));
 });
 
 module.exports = shortenRouter;

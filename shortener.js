@@ -24,7 +24,7 @@ exports.httpShortener = function(req, url) {
   if (isValid.isValid(url)) {
     urlArr.push(url);
     last++;
-    return { "original_url": "http://" + url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
+    return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid."; // Does not catch all cases but will do for most
   }
@@ -35,7 +35,7 @@ exports.httpsShortener = function(req, url) {
   if (isValid.isValid(url)) {
     urlArr.push(url);
     last++;
-    return { "original_url": "https://" + url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
+    return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid."; // Does not catch all cases but will do for most
   }
