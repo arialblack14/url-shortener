@@ -1,26 +1,59 @@
 var express = require('express'),
     bodyParser = require('body-parser');
+    // mongoose = require('mongoose');
+
+// Check if the url is a proper one
+var isValid = require('../isValid');
+
+
+var Urls = require('../models/urls');
 
 // Require the shortener module which returns the needed output
 var shortener = require('../shortener');
-
+// Build our router
 var shortenRouter = express.Router();
 
 shortenRouter.use(bodyParser.json());
 
-// This takes care of urls like www.example.com
+// // This takes care of urls like www.example.com
+// shortenRouter.route('/:short')
+// .get(function(req, res, next) {
+//   Urls.create(req.body, function(err, url) {
+//     // Search our db if there is already the requested url in it
+//     if (err) throw err;
+//
+//     if (isValid.isValid(url)) {
+//
+//       //url.original_url = req.params.short;
+//       //url.short_url = '123';
+//       var id = url._id;
+//       console.log('New url created...');
+//       res.writeHead(200, {
+//             'Content-Type': 'text/plain'
+//         });
+//         res.end('Added the url with id: ' + id);
+//     }
+//   });
+// })
+// .post(function(req, res, next) {
+//   Urls.create(req.body, function(err, url) {
+//     // Search our db if there is already the requested url in it
+//     if (err) throw err;
+//
+//     if (isValid.isValid(url)) {
+//
+//       //url.original_url = req.params.short;
+//       //url.short_url = '123';
+//
+//       console.log('New url created...');
+//       res.send(url);
+//     }
+//   });
+// });
+
 shortenRouter.route('/:short')
 .get(function(req, res, next) {
-  var result = shortener.shortener(req, req.params.short);
-  // http://stackoverflow.com/questions/28869001/throw-message-typeerror-first-argument-must-be-a-string-or-buffer
-
-  // With plain JSON i can't add the link to the short_url, so i will turn it into html
-  res.setHeader('Content-Type', 'text/html');
-  res.send('{ original_url:' + result.original_url +', short_url: <a href="' + req.params.short + '">' + result.short_url + '</a> }');
-
-  // I can add the link in the views in the urls.jade
-  // http://stackoverflow.com/questions/10919650/accessing-express-js-local-variables-in-client-side-javascript
-  // res.render('urls', { title: 'JSON Response', original_url: JSON.stringify(result.original_url) , short_url: JSON.stringify(result.short_url) });
+  res.send(shortener.shortener(req, 'http://' + req.params.short));
 });
 
 // Since i get a 404 if user requests for a url like http://www.example.com

@@ -4,15 +4,12 @@ var express = require('express'),
 // Check if the url is a proper one
 var isValid = require('./isValid');
 
-// Push all new entries to an array which will hold all shortened urls
-var urlArr = [];
-// Get last url entered
-var last = (urlArr.length -1);
+// This will hold the 5 character random string
+var last = "";
 
 exports.shortener = function(req, url) {
   if (isValid.isValid(url)) {
-    urlArr.push(url);
-    last++;
+    last = Math.random().toString(36).substr(2, 5);
     // http://stackoverflow.com/questions/10183291/how-to-get-the-full-url-in-express
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
@@ -22,8 +19,7 @@ exports.shortener = function(req, url) {
 // Handle request: http:// + url
 exports.httpShortener = function(req, url) {
   if (isValid.isValid(url)) {
-    urlArr.push(url);
-    last++;
+    last = Math.random().toString(36).substr(2, 5);
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid.";
@@ -33,8 +29,7 @@ exports.httpShortener = function(req, url) {
 // Handle request: https:// + url
 exports.httpsShortener = function(req, url) {
   if (isValid.isValid(url)) {
-    urlArr.push(url);
-    last++;
+    last = Math.random().toString(36).substr(2, 5);
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid.";
