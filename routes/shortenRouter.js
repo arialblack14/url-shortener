@@ -6,7 +6,7 @@ var express = require('express'),
 var isValid = require('../isValid');
 
 
-var Urls = require('../models/urls');
+// var Urls = require('../models/urls');
 
 // Require the shortener module which returns the needed output
 var shortener = require('../shortener');
@@ -16,41 +16,6 @@ var shortenRouter = express.Router();
 shortenRouter.use(bodyParser.json());
 
 // // This takes care of urls like www.example.com
-// shortenRouter.route('/:short')
-// .get(function(req, res, next) {
-//   Urls.create(req.body, function(err, url) {
-//     // Search our db if there is already the requested url in it
-//     if (err) throw err;
-//
-//     if (isValid.isValid(url)) {
-//
-//       //url.original_url = req.params.short;
-//       //url.short_url = '123';
-//       var id = url._id;
-//       console.log('New url created...');
-//       res.writeHead(200, {
-//             'Content-Type': 'text/plain'
-//         });
-//         res.end('Added the url with id: ' + id);
-//     }
-//   });
-// })
-// .post(function(req, res, next) {
-//   Urls.create(req.body, function(err, url) {
-//     // Search our db if there is already the requested url in it
-//     if (err) throw err;
-//
-//     if (isValid.isValid(url)) {
-//
-//       //url.original_url = req.params.short;
-//       //url.short_url = '123';
-//
-//       console.log('New url created...');
-//       res.send(url);
-//     }
-//   });
-// });
-
 shortenRouter.route('/:short')
 .get(function(req, res, next) {
   res.send(shortener.shortener(req, 'http://' + req.params.short));

@@ -5,18 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var mongoose = require('mongoose');
-//
-// // Connect to the mongodb database
-// var dbUrl = 'mongodb://localhost:27017/shorten';
-// mongoose.connect(dbUrl);
-//
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error'));
-// db.once('open', function() {
-//   // We got connected!
-//   console.log('Connected correctly to server');
-// });
 
 var routes = require('./routes/index');
 // This route will shorten the url and return a json

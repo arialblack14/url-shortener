@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 /* redirect to the original url */
 router.get('/:new', function(req, res, next) {
-  res.redirect('http://www.google.com');
+  res.redirect(GLOBAL_URL);
 });
 
 module.exports = router;

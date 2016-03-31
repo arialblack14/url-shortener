@@ -6,11 +6,14 @@ var isValid = require('./isValid');
 
 // This will hold the 5 character random string
 var last = "";
+// Pollute the global env....
+GLOBAL_URL = '';
 
 exports.shortener = function(req, url) {
   if (isValid.isValid(url)) {
     last = Math.random().toString(36).substr(2, 5);
     // http://stackoverflow.com/questions/10183291/how-to-get-the-full-url-in-express
+    GLOBAL_URL = url;
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid."; // Does not catch all cases but will do for most
@@ -20,6 +23,7 @@ exports.shortener = function(req, url) {
 exports.httpShortener = function(req, url) {
   if (isValid.isValid(url)) {
     last = Math.random().toString(36).substr(2, 5);
+    GLOBAL_URL = url;
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid.";
@@ -30,6 +34,7 @@ exports.httpShortener = function(req, url) {
 exports.httpsShortener = function(req, url) {
   if (isValid.isValid(url)) {
     last = Math.random().toString(36).substr(2, 5);
+    GLOBAL_URL = url;
     return { "original_url": url , "short_url": (req.protocol + '://' + req.get('host') + "/" + last ) };
   } else {
     return "The url you provided is invalid.";
